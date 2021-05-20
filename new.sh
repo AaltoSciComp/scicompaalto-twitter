@@ -2,12 +2,12 @@
 
 set -e
 
-echo "Enter relative tweet filename (e.g. YYYY/MM/announce-something)"
+echo "Enter relative tweet filename (e.g. announce-something, YYYY/MM/ gets prepended)"
 read -p '> ' slug
 
 git checkout -b "$slug"
 
-fname="tweets/${slug}.tweet"
+fname="tweets/$(date +%Y/%m)/${slug}.tweet"
 mkdir -p $(dirname "$fname")
 touch "$fname"
 git add --intent-to-add "$fname"
